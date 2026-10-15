@@ -1,0 +1,33 @@
+# Project manifest
+
+RAINCloud Digital | RAINCloud_SAP | J. Campbell
+
+- Name: RAINCloud_SAP
+- Original author: Jerry Campbell; documentation credit: J. Campbell.
+- Project attribution: RAINCloud Digital, a limited liability company providing
+  engineering, product development, intellectual-property consulting, and
+  marketing services. See the website-sourced description in README.md.
+- Purpose: repair and preserve the existing SAP FPGA computer as a standalone,
+  reproducible DE10-Lite project.
+- Revision: 0.1.0 development baseline, 2026-10-15; not hardware-qualified.
+- Target: Terasic DE10-Lite, MAX 10 10M50DAF484C7G, 50 MHz oscillator.
+- Scope: existing development board, FPGA RTL and verification. No new PCB,
+  BOM procurement, PSpice, FreeCAD, placement, routing, or fabrication work.
+- Authoritative native project: `RAINCloud_SAP.qpf` / `RAINCloud_SAP.qsf`.
+- Authoritative implementation: explicit `rtl/` sources listed in the QSF.
+- Tools: Quartus Prime Lite 25.1std.0 Build 1129; Questa Altera Starter 2025.2;
+  regression runner supports Questa and Icarus Verilog 13.
+- Current gate: implementation and prototype validation; see VALIDATION.md.
+- Frozen for this revision: device/pins, 16-byte address space, legacy opcode
+  values, core module partition, board switch assignments.
+- Verified: full Quartus compilation, fitted timing under the checked-in
+  constraints, and all five Questa functional regression suites. Provisional:
+  board electrical operation and hardware validation. Quartus has 9 expected
+  warnings; all simulation suites have zero warnings. See VALIDATION.md.
+- Naming: 190 internal identifiers renamed by function without changing logic
+  or ports; see NET_NAMES.md and reference/NET_RENAMES.json.
+- Original source/provenance: `reference/SOURCE_MANIFEST.json`.
+- Public repository: https://github.com/jerrycampbellus/RAINCloud_SAP
+- Publication: source baseline on `main`; hardware qualification remains pending.
+- Licensing: existing file-level notices preserved; no repository-wide
+  open-source license selected. See NOTICE.md.
