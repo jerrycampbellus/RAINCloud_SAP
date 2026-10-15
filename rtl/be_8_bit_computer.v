@@ -185,7 +185,7 @@ BE_Clock	b2v_CLK(
 	.DISPLAY_CLK(display_clock));
 
 
-Data_Bus	b2v_DB(
+Bus_Display_Register	bus_display_register(
 	.CLK(cpu_clock),
 	.DB_Enable(bus_display_enable),
 	.DB(data_bus),
@@ -200,7 +200,7 @@ JC_Display	b2v_DISP(
 	.Control_Flags(control_word),
 	.CPU_Flags(cpu_flags),
 	.CPU_Output(output_display),
-	.Data_Bus(bus_display),
+	.Bus_Display_Sample(bus_display),
 	.Instruction_Register(instruction_display),
 	.JC_OUPUT_SELECT(DISPLAY_SELECT),
 	.Memory_Address_Register(mar_display),

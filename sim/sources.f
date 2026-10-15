@@ -4,7 +4,7 @@ rtl/b_register.v
 rtl/be_8_bit_computer.v
 rtl/be_clock.v
 rtl/control_logic.v
-rtl/data_bus.v
+rtl/bus_display_register.v
 rtl/ic_74ls161_rtl.v
 rtl/ic_74ls173_rtl.v
 rtl/ic_74ls245ab_rtl.v

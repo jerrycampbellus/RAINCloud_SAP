@@ -14,7 +14,7 @@ module JC_Display
 		input	wire	[7:0]		RAM,								// 6) 	8 bit Output from RAM Contents
 		input	wire	[3:0]		Program_Counter,				// 7) 	4 bit Output from Program Counter
 		input 	wire	[16:0]	CPU_Output,						// 8) 	17 bit Output for CPU based on a 3 BCD digits and sign
-		input	wire	[7:0]		Data_Bus,						// 9) 	8 bit Output for Data Bus
+		input	wire	[7:0]		Bus_Display_Sample,				// 9) Registered sample of the shared CPU bus
 		input	wire	[15:0]	Control_Flags,					// 10)	16 bit Output for Control Flags
 		input 	wire	[7:0]		Instruction_Register,		//	11)	8 bit Output for Instruction Register
 		
@@ -181,10 +181,10 @@ module JC_Display
 						JC_7SEG_OUPUT_4 = Segment_Decode (5'h0B);
 						JC_7SEG_OUPUT_3 = Segment_Decode (5'h15);
 						JC_7SEG_OUPUT_2 = Segment_Decode (5'h15);
-						JC_7SEG_OUPUT_1 = Segment_Decode ({1'b0, Data_Bus[7:4]});
-						JC_7SEG_OUPUT_0 = Segment_Decode ({1'b0, Data_Bus[3:0]});
+						JC_7SEG_OUPUT_1 = Segment_Decode ({1'b0, Bus_Display_Sample[7:4]});
+						JC_7SEG_OUPUT_0 = Segment_Decode ({1'b0, Bus_Display_Sample[3:0]});
 						
-						JC_LED_OUTPUT = Data_Bus;
+						JC_LED_OUTPUT = Bus_Display_Sample;
 						first_row_LED = 8'b00000000;
 						second_row_LED = 8'b00000000;
 						toggle_LED = 1'b0;						

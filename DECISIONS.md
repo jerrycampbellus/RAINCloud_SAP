@@ -158,3 +158,39 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
   simulator license files, credentials, and installation/runtime files.
 - This publication authorization supersedes the earlier local-only repository
   status. Simulation and fitted timing pass; board qualification remains pending.
+
+## 2026-10-15 — Architecture diagrams and module walkthrough
+
+- Request: J. Campbell requested module-connection diagrams, a top-level GitHub
+  README graphic, and an update to the public repository, then offered review
+  in the conversation first. Prepare the local review copy before publication.
+- Decision: use a system overview and a separate datapath view, with explanatory
+  tables in ARCHITECTURE.md covering control, clock phases, display taps, and
+  the full 21-module source map.
+- Distinguish the shared `data_bus` net from the `Data_Bus` display sampler;
+  show the dedicated MAR address and A/B operand paths, retained flags, and
+  the B output path that current microcode does not select.
+- Keep editable SVGs, PNG previews, and their Python generator in the repository.
+  The documentation follows the active RTL; the original snapshot is unchanged.
+- Scope: documentation and graphics tooling only. Existing hardware behavior,
+  pin assignments, simulation coverage, attribution, and licensing are preserved.
+
+## 2026-10-15 — Bus display register name and final review
+
+- Authorization: J. Campbell agreed that `Data_Bus` misnames the display sampler
+  and approved `Bus_Display_Register`, requesting one more review before commit.
+- Decision: rename the active module and file, use `bus_display_register` for
+  its instance, and name the receiving display port `Bus_Display_Sample`.
+  Update both source lists, diagrams, and engineering documentation together.
+- Rationale: distinguish the shared `data_bus` wiring, its diagnostic sample
+  register, and `JC_Display`, which selects values and drives the board outputs.
+- Scope supersedes the documentation-only scope of the preceding entry: RTL
+  identifiers and source paths now change, while executable logic and sampling
+  behavior remain the same. The original reference snapshot is preserved.
+- Evidence: reversing the three identifier renames reproduces the baseline RTL
+  tokens exactly. Structural checks and all five Questa suites pass. Full
+  Quartus compile retains nine expected warnings; timing has none. Documentation
+  links, module map, graphics, notices, and original hashes pass review.
+- Status: J. Campbell approved the final review copy and requested the commit
+  on 2026-10-15. Proceed with the authorized public repository update.
+  Board validation remains pending.

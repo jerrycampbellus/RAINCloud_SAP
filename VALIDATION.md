@@ -5,7 +5,8 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
 Date: 2026-10-15. Revision: 0.1.0 development.
 
 Current revision includes warning remediation, RAINCloud Digital attribution,
-and descriptive signal names. All 34 active code/configuration files credit
+descriptive signal names, architecture graphics, and the `Bus_Display_Register`
+module rename. Active code/configuration files credit
 RAINCloud Digital and J. Campbell. The README company description is based on
 raincloud.digital. All 23 original reference hashes and 13 imported vendor
 notice blocks remain unchanged.
@@ -38,7 +39,54 @@ containing no prior build databases or local programmer chain, passed the
 structural/path-case checks, all five Questa suites, and a complete Quartus
 compile. Simulation had zero errors/warnings; Quartus retained the same nine
 expected warnings and zero timing warnings. All 23 original snapshot hashes
-also matched after checkout. Only publication documentation changed afterward.
+also matched after checkout. Only publication documentation changed between
+that check and the initial public source baseline. The later architecture and
+display-register update was revalidated as recorded next.
+
+## Architecture and bus display rename review — 2026-10-15
+
+The update adds documentation, SVG/PNG graphics, and a Python diagram generator,
+and renames `Data_Bus` to `Bus_Display_Register`. Its source file and instance
+are renamed, and the receiving `JC_Display` port is now `Bus_Display_Sample`.
+The Quartus and simulation source lists use the new file path. This supersedes
+the earlier documentation-only review scope.
+
+- Structural check: PASS; 21 modules, 71 pins, 16 program bytes, and all 23
+  original source hashes.
+- Logic-preservation check: reversing the three identifier renames makes all
+  21 active RTL files match the public baseline's executable tokens exactly.
+  Comments and whitespace are excluded from this comparison. Source-list
+  changes are limited to the renamed file path. Pins, timing constraints,
+  program bytes, all 13 Intel notices, and author attribution are preserved.
+- Module map: all 21 active RTL module types appear exactly once with links
+  to their implementing files. The six bus-source names and eight capture
+  controls agree with the core wiring.
+- Documentation links: 56 relative links across 12 Markdown documents resolve
+  with exact path case, including the README's architecture-section anchors.
+- SVG generation: deterministic; both files parse as XML and include accessible
+  titles/descriptions, with no external assets or scripts.
+- PNG exports: dimensions match their SVGs and both files exactly match a fresh
+  render. Visual inspection confirmed the new module name fits and all shared-bus
+  connections have descriptions beside their lines.
+- Timing/microcode review: the guide follows the active T0–T4 decode, CPU edge
+  phases, flag lifetime, independent display tick, and bus sampler reset behavior.
+- Questa 2025.2: all five existing suites passed after the rename at 15:00 Eastern,
+  with zero compilation/elaboration/simulation errors or warnings.
+- Quartus 25.1: full compile completed at 15:01 Eastern with zero errors and the
+  same nine documented warnings. Timing analysis completed with zero errors or
+  warnings. Utilization remains 870 logic elements, 285 registers, and 71 pins;
+  minimum timing slacks match the table below.
+- Current generated SOF SHA-256:
+  `6bc103163ff22c952f0e898f73f37d698ed7df9d123a6057f610c9d6a3729854`.
+  The generated image remains excluded from Git; no board programming was done.
+- Publication review: no stale sampler names remain in active RTL, source lists,
+  or graphics. Historical names remain in the provenance and migration records.
+  Generated outputs, simulator licenses, credentials, and local chains remain
+  excluded from the publication file set.
+- Local audit summary: `build/architecture/final-review.log` (generated,
+  excluded from Git). The earlier `review-checks.log` records the first diagram
+  draft. J. Campbell approved the final review copy for commit and publication
+  on 2026-10-15. Hardware validation remains pending.
 
 ## Quartus 25.1 results after warning cleanup and signal renaming
 

@@ -47,3 +47,22 @@ interfaces, module instances, Boolean expressions, bit order, clocking, and
 reset logic are preserved. CPU testbench hierarchical references were updated.
 The warning cleanup preceding this pass changes the internal bus implementation
 and is documented separately in VALIDATION.md.
+
+## Bus display naming — 2026-10-15
+
+After the initial 190-net naming pass, J. Campbell approved a separate
+clarification of the diagnostic bus-sampling path:
+
+| Item | Previous name | Current name |
+| --- | --- | --- |
+| Sampler module | `Data_Bus` | `Bus_Display_Register` |
+| Active source file | `rtl/data_bus.v` | `rtl/bus_display_register.v` |
+| Core instance | `b2v_DB` | `bus_display_register` |
+| Sampled-value input on `JC_Display` | `Data_Bus` | `Bus_Display_Sample` |
+
+The shared `data_bus` net, sample net `bus_display`, sampler ports, capture
+logic, and display behavior are unchanged. The Quartus and simulation source
+lists use the renamed file. This later update intentionally changes the
+module/instance name and one display port name; it is separate from the
+port-preserving net mapping above. The original reference snapshot retains
+its historical names and hashes.

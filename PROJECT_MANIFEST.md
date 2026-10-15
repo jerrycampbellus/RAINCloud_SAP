@@ -15,6 +15,8 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
   BOM procurement, PSpice, FreeCAD, placement, routing, or fabrication work.
 - Authoritative native project: `RAINCloud_SAP.qpf` / `RAINCloud_SAP.qsf`.
 - Authoritative implementation: explicit `rtl/` sources listed in the QSF.
+- Architecture guide: [ARCHITECTURE.md](ARCHITECTURE.md), with system/datapath
+  diagrams in `docs/images/` and their generator in `scripts/draw_architecture.py`.
 - Tools: Quartus Prime Lite 25.1std.0 Build 1129; Questa Altera Starter 2025.2;
   regression runner supports Questa and Icarus Verilog 13.
 - Current gate: implementation and prototype validation; see VALIDATION.md.
@@ -26,6 +28,9 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
   warnings; all simulation suites have zero warnings. See VALIDATION.md.
 - Naming: 190 internal identifiers renamed by function without changing logic
   or ports; see NET_NAMES.md and reference/NET_RENAMES.json.
+- Display naming: `Bus_Display_Register` (formerly `Data_Bus`) stores the bus
+  sample; `JC_Display.Bus_Display_Sample` receives it. This later naming update
+  preserves logic and is documented separately in NET_NAMES.md.
 - Original source/provenance: `reference/SOURCE_MANIFEST.json`.
 - Public repository: https://github.com/jerrycampbellus/RAINCloud_SAP
 - Publication: source baseline on `main`; hardware qualification remains pending.

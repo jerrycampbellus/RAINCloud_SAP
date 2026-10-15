@@ -16,7 +16,7 @@ set_global_assignment -name VERILOG_FILE rtl/b_register.v
 set_global_assignment -name VERILOG_FILE rtl/be_8_bit_computer.v
 set_global_assignment -name VERILOG_FILE rtl/be_clock.v
 set_global_assignment -name VERILOG_FILE rtl/control_logic.v
-set_global_assignment -name VERILOG_FILE rtl/data_bus.v
+set_global_assignment -name VERILOG_FILE rtl/bus_display_register.v
 set_global_assignment -name VERILOG_FILE rtl/ic_74ls161_rtl.v
 set_global_assignment -name VERILOG_FILE rtl/ic_74ls173_rtl.v
 set_global_assignment -name VERILOG_FILE rtl/ic_74ls245ab_rtl.v

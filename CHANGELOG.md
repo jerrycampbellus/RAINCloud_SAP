@@ -2,6 +2,25 @@
 
 RAINCloud Digital | RAINCloud_SAP | J. Campbell
 
+## Architecture and bus display naming — 2026-10-15
+
+- Added a system overview at the top of the GitHub README and a detailed CPU
+  datapath diagram, with editable SVG sources and matching PNG previews.
+- Added ARCHITECTURE.md with all 21 modules, bus ownership and capture paths,
+  clock/reset behavior, display taps, and an ADD instruction walkthrough.
+- Added a standard-library Python diagram generator and PNG export notes.
+- Placed connector descriptions beside their lines and labeled every shared-bus
+  connection with bit widths and transfer descriptions.
+- Renamed the diagnostic `Data_Bus` module/file to `Bus_Display_Register` /
+  `rtl/bus_display_register.v`, its instance to `bus_display_register`, and the
+  corresponding `JC_Display` port to `Bus_Display_Sample`. Updated build and
+  simulation source lists, documentation, and graphics.
+- Clarified the diagnostic sampler's existing lack of reset/initialization.
+  RTL logic, pin/timing constraints, and program bytes are unchanged.
+- Validation after rename: token-preservation and structural checks pass; all
+  five Questa suites pass without warnings; Quartus compile and timing pass
+  with the same nine expected build warnings. Documentation and graphics reviewed.
+
 ## 0.1.0 development — 2026-10-15
 
 - Prepared the public source baseline with clone/build instructions, contribution
