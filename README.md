@@ -109,7 +109,7 @@ establish simulation and implementation readiness; board testing is still pendin
 | SW3:1 | 000–110: 1, 2, 4, 8, 16, 32, 64 Hz; 111: 25 MHz |
 | SW7:4 | Display selection below |
 | SW8 | Interpret the stored OUT byte as signed two's complement |
-| SW9 | Display OUT magnitude in hexadecimal instead of decimal |
+| SW9 | OUT magnitude: 1 shows two hexadecimal digits; 0 shows three decimal digits |
 | LEDR0 | CPU clock phase |
 | LEDR9 | Halted |
 | LEDR8:1 | Selected diagnostic byte |
@@ -126,6 +126,11 @@ The internal bus is zero when no source is selected. `Bus_Display_Register`
 captures the bus on each CPU rising edge when enabled and captures zero when
 disabled. `JC_Display` selects that stored sample or another diagnostic value
 to drive the board displays.
+
+In the C (OUT) view, hexadecimal uses HEX1:HEX0 and blanks HEX2; decimal uses
+all three numeric positions, HEX2:HEX0, including leading zeros. For example,
+unsigned 255 displays `C___FF` in hex and `C__255` in decimal (`_` is blank).
+The C label and sign position stay fixed, and changing SW9 works while halted.
 
 ## Instruction set
 

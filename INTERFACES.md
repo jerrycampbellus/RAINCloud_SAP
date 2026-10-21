@@ -17,6 +17,7 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
 | ISA | High nibble opcode, low nibble address, PC wraps at 16 | rtl/microcode_statemachine.v |
 | Flags | bit 0 zero; bit 1 ADD carry / SUB borrow; bits 7:2 zero | rtl/alu.v |
 | Switch/display mapping | See README board controls | rtl/RAINCloud_SAP.v, rtl/jc_display.v |
+| C (OUT) digit count | SW9 drives formatting and JC_Display.CPU_Output_Hexadecimal: hex shows HEX1:HEX0 with HEX2 blank; decimal shows HEX2:HEX0; sign stays on HEX3 | rtl/be_8_bit_computer.v, rtl/jc_display.v, sim/tb_output.sv |
 
 No external GPIO bus, custom PCB, enclosure, or mechanical interfaces are
 introduced. The original 74LS-style module partition is retained. FPGA-mode

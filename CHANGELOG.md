@@ -2,6 +2,17 @@
 
 RAINCloud Digital | RAINCloud_SAP | J. Campbell
 
+## C display digit count — 2026-10-20
+
+- Hexadecimal OUT now shows two digits on HEX1:HEX0 with HEX2 blank. Decimal
+  retains three digits, including leading zeros; C and sign positions are fixed.
+- Routed the existing hexadecimal selection to the display decoder. Switching
+  modes continues to work while the CPU is halted; other display views are unchanged.
+- Extended `tb_output` to verify actual segment patterns for all 1,024 value/
+  signed/format combinations, reset, and mode independence of the other views.
+- Validation: all five Questa suites and fitted timing pass; full Quartus
+  compilation retains the same nine expected warnings. Board testing is pending.
+
 ## Architecture and bus display naming — 2026-10-15
 
 - Added a system overview at the top of the GitHub README and a detailed CPU

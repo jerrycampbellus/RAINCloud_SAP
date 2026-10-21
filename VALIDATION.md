@@ -2,12 +2,12 @@
 
 RAINCloud Digital | RAINCloud_SAP | J. Campbell
 
-Date: 2026-10-15. Revision: 0.1.0 development.
+Last updated: 2026-10-20. Revision: 0.1.0 development.
 
 Current revision includes warning remediation, RAINCloud Digital attribution,
 descriptive signal names, architecture graphics, and the `Bus_Display_Register`
-module rename. Active code/configuration files credit
-RAINCloud Digital and J. Campbell. The README company description is based on
+module rename, plus two-digit hexadecimal C output. Active code/configuration
+files credit RAINCloud Digital and J. Campbell. The README company description is based on
 raincloud.digital. All 23 original reference hashes and 13 imported vendor
 notice blocks remain unchanged.
 
@@ -42,6 +42,34 @@ expected warnings and zero timing warnings. All 23 original snapshot hashes
 also matched after checkout. Only publication documentation changed between
 that check and the initial public source baseline. The later architecture and
 display-register update was revalidated as recorded next.
+
+## C display digit count — 2026-10-20
+
+The C (OUT) view now blanks HEX2 in hexadecimal mode, showing two numeric
+digits on HEX1:HEX0. Decimal retains all three digits, including leading zeros.
+The C label and sign position remain fixed. The output register's stored value
+and 17-bit formatted payload are unchanged.
+
+- Structural check: PASS; 21 modules, 71 pins, 16 program bytes, and all 23
+  original source hashes.
+- Questa: all five regression suites PASS with zero errors and warnings.
+  `tb_output` checks actual six-digit segment patterns for all 1,024 value,
+  signed/unsigned, and hex/decimal combinations, mode changes with the CPU
+  clock stopped, asynchronous reset in both formats, and mode independence
+  of all 15 other display selectors. Evidence: `build/questa/regression.log`.
+- Quartus 25.1std.0 Build 1129: full compilation PASS with zero errors and the
+  same nine expected warnings described below. Timing analysis reports zero
+  errors and warnings. Utilization is 876 logic elements, 285 registers, and
+  71 pins. Evidence: `build/compile.log` and
+  `build/quartus/RAINCloud_SAP.sta.summary`.
+- Minimum timing slacks across analyzed corners: setup 8.991 ns, hold 0.132 ns,
+  recovery 14.657 ns, removal 0.424 ns, and minimum pulse width 9.326 ns.
+- Rebuilt `build/quartus/RAINCloud_SAP.sof`: 3,216,581 bytes; SHA-256
+  `700f6fae2afcb7453144c15c8fec8009cd5ded15739463a74279383efb497d4f`.
+  The generated image remains excluded from Git. No board programming or
+  hardware observation was performed.
+- Publication scope: the display fix, its regression coverage, and companion
+  documentation. J. Campbell requested the Git update on 2026-10-20.
 
 ## Architecture and bus display rename review — 2026-10-15
 
@@ -235,6 +263,8 @@ No timing warnings have been waived as a substitute for analysis.
    press/release, with both LEDR0 phases and progressing PC/instruction displays.
 4. Load a small arithmetic/OUT/HLT image and verify the expected result remains
    visible while halted. Change signed/hex display modes while halted.
+   In the C view, confirm HEX2 is blank for hex and shows the hundreds digit
+   for decimal, with the C label and sign position unchanged.
 5. At slow speed, tap reset after HALT. HALT, PC, registers and flags must clear
    without needing a full slow-clock period. Remember that reset retains RAM.
 6. Test all speed settings and transitions between manual/continuous operation.

@@ -168,7 +168,7 @@ not select a shared-bus source or modify stored CPU data.
 | 5 | `mar_display` | 4 | Stored MAR, independent of its output enable |
 | 6 | `ram_display` | 8 | RAM byte at the currently driven `ram_address` |
 | 7 | `pc_value` | 4 | Stored PC |
-| 8 | `output_display` | 17 | OUT sign symbol plus three decimal/hexadecimal digits |
+| 8 | `output_display` | 17 | OUT sign symbol and three digit slots; only two slots are shown in hex mode |
 | 9 | `bus_display` | 8 | Last sample taken by `Bus_Display_Register` |
 | A | `control_word` | 16 | Diagnostic control bits |
 | B | `instruction_display` | 8 | Full stored instruction |
@@ -178,6 +178,12 @@ not select a shared-bus source or modify stored CPU data.
 SW8 selects signed interpretation; SW9 selects hexadecimal instead of decimal
 magnitude. Display choices and output-format changes continue to work during
 HALT because input conditioning and combinational display logic remain active.
+
+The same hexadecimal mode signal also reaches `JC_Display.CPU_Output_Hexadecimal`.
+In the C (OUT) view, it blanks HEX2 when hexadecimal is selected, leaving the
+two digits on HEX1:HEX0. Decimal displays all three digits on HEX2:HEX0, including
+leading zeros. HEX5 remains C, HEX4 remains blank, and HEX3 retains the existing
+sign/blank position. Other diagnostic views are unaffected by this mode signal.
 
 The independent `display_clock` from `BE_Clock` alternates the two bytes of
 `control_word` on LEDR8:1 when the control view is selected. At 50 MHz it changes

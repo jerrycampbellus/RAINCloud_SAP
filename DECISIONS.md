@@ -194,3 +194,20 @@ RAINCloud Digital | RAINCloud_SAP | J. Campbell
 - Status: J. Campbell approved the final review copy and requested the commit
   on 2026-10-15. Proceed with the authorized public repository update.
   Board validation remains pending.
+
+## 2026-10-20 — C display hexadecimal digit count
+
+- Request: J. Campbell requested two numeric digits for hexadecimal C (OUT)
+  output, retaining all three numeric digits for decimal.
+- Decision: route the existing hexadecimal selection to
+  `JC_Display.CPU_Output_Hexadecimal` and blank HEX2 only in the C view when
+  hexadecimal is selected. Keep HEX1:HEX0, the C label, and sign position fixed.
+- Preserve the output register's 17-bit formatted payload and stored value.
+  Mode changes continue to work with the CPU clock stopped, and other display
+  views retain their existing behavior.
+- Verification: all 1,024 output formats and segment patterns pass, along with
+  reset, other display views, all five regression suites, and the full Quartus
+  build. Timing passes; the same nine expected build warnings remain.
+- Status: J. Campbell requested commit and publication of this SAP display
+  update on 2026-10-20, superseding its local-only status. Board programming
+  and hardware qualification remain pending.

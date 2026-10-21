@@ -194,6 +194,7 @@ Bus_Display_Register	bus_display_register(
 
 JC_Display	b2v_DISP(
 	.Display_CLK(display_clock),
+	.CPU_Output_Hexadecimal(HEXADECIMAL_FLAG),
 	.A_Register(a_display),
 	.ALU(alu_result),
 	.B_Register(b_display),

@@ -5,6 +5,7 @@ module JC_Display
 
 	(
 		input wire				Display_CLK,					// Display Clock for LED Ouptut Toggle
+		input wire				CPU_Output_Hexadecimal,		// Show two OUT digits when high, three when low
 		
 		input 	wire	[7:0]		A_Register,						// 1)		8 bit Output from A Register
 		input 	wire	[7:0]		B_Register,						// 2) 	8 bit Output from B Register
@@ -160,12 +161,13 @@ module JC_Display
 						toggle_LED = 1'b0;
 					end
 				
-				4'b1000	:					// CPU Output - C_SXXX
+				4'b1000	:					// CPU Output: C_SXXX decimal; C_S_XX hexadecimal (_ is blank)
 					begin
 						JC_7SEG_OUPUT_5 = Segment_Decode (5'h0C);
 						JC_7SEG_OUPUT_4 = Segment_Decode (5'h15);
 						JC_7SEG_OUPUT_3 = Segment_Decode (CPU_Output[16:12]);
-						JC_7SEG_OUPUT_2 = Segment_Decode ({1'b0, CPU_Output[11:8]});
+						JC_7SEG_OUPUT_2 = CPU_Output_Hexadecimal ? Segment_Decode (5'h15)
+							: Segment_Decode ({1'b0, CPU_Output[11:8]});
 						JC_7SEG_OUPUT_1 = Segment_Decode ({1'b0, CPU_Output[7:4]});
 						JC_7SEG_OUPUT_0 = Segment_Decode ({1'b0, CPU_Output[3:0]});
 						
